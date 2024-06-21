@@ -68,10 +68,11 @@ body {
     height: 35px;
 }
 
-.text-box{
+.text-box {
     position: absolute;
     top: 40%;
     left: 50%;
+    text-align: center;
 
     /* 
         O transform e translate(-50%, -50%) são utilizados para centralizar o elemento.
@@ -87,6 +88,9 @@ body {
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+    /* Ajuda com relação a comportamento com animações */
+    backface-visibility: hidden;
+    margin-bottom: 60px;
 }
 
 /* colando display block cria-se uma especie de br nos span fazendo
@@ -97,6 +101,18 @@ com que quebrem de linha mesmo estando no mesmo elemento h1 */
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+
+    /* 
+    Define a quantidade de vezes seguidas que a animação ocorrera
+    */
+    /* animation-iteration-count: 3; */
+
+    /* Defini o tempo em que a animação será executada ao carregar a pagina
+     */
+    /* animation-delay: 3s; */
 }
 
 .heading-primary-sub {
@@ -104,4 +120,126 @@ com que quebrem de linha mesmo estando no mesmo elemento h1 */
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 18.8px;
+    
+    animation: moveInRight 2s ease-in-out;
+}
+
+/* Animations Animações */
+
+/* 
+    Como usar: Ao chamar o @keyFrames basta passar o nome da animação,
+    - Depois basta definir os momentos da animação
+    - O opacity serve faz com que no inicio fique invisivel e depois apareça
+    - transform está fazendo o mesmo que quando usamos para centralizar, porem como a animação está da esquerda para direita, posicionamos o elementos um pouco para esquerda
+
+    Como aplicar:
+    Basta colocar o código abaixo, chamando o nome da animação e definindo o tempo 
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+*/
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+
+/* Buttton  Animation - Animação do button*/
+
+.btn:link,
+.btn:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+    /* Sombra bem discreta */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn:active{
+    transform: translateY(-1px);
+}
+
+.btn-white{
+    background: #fff;
+    color: #777;
+}
+
+.btn::after{
+    content:"" ;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn-white::after{
+    background-color: #fff;
+}
+
+.btn:hover::after{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+
+.btn-animated{
+    animation: moveInBottom 0.3s ease-in-out 0.75s;
+    /* Faz com que o button não receba nenhum estilo no 0% */
+    animation-fill-mode: backwards;
 }
