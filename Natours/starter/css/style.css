@@ -8,10 +8,23 @@ Dark green: #28b485
 */
 
 /* RESET Para browsers usando universal selctor ou seja é o " * " */
-* {
+* ,
+*::after,
+*::before{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+html{
+    
+    /* 
+    Isso aqui vai ajudar na questão de responsividade do website
+    onde posso manipular todas as fontes com apenas uma linha
+    */
+    
+    font-size: 100%;
+    
 }
 
 /* 
@@ -24,10 +37,18 @@ cada filho receberá esse css
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+
+    /* 
+    
+    Quando você define box-sizing: border-box;, a largura e a altura de um elemento incluem o conteúdo, o padding e a borda. Isso facilita a definição de layouts porque as dimensões que você especifica para um elemento são as dimensões finais que ele terá na tela, sem precisar adicionar o padding e a borda separadamente
+    */
+
+    box-sizing: border-box;
+
 }
 
 /* HEADER CSS */
@@ -58,17 +79,17 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
-.logo {
-    height: 35px;
+.header__logo {
+    height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -90,17 +111,17 @@ body {
     text-transform: uppercase;
     /* Ajuda com relação a comportamento com animações */
     backface-visibility: hidden;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 /* colando display block cria-se uma especie de br nos span fazendo
 com que quebrem de linha mesmo estando no mesmo elemento h1 */
 
-.heading-primary-main {
+.heading-primary--main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 2s;
@@ -115,9 +136,9 @@ com que quebrem de linha mesmo estando no mesmo elemento h1 */
     /* animation-delay: 3s; */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 18.8px;
     
@@ -141,11 +162,11 @@ com que quebrem de linha mesmo estando no mesmo elemento h1 */
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
-        transform: translateX(10px);
+        transform: translateX(1rem);
 
     }
 
@@ -158,11 +179,11 @@ com que quebrem de linha mesmo estando no mesmo elemento h1 */
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
 
     }
 
@@ -179,24 +200,25 @@ com que quebrem de linha mesmo estando no mesmo elemento h1 */
 .btn:visited{
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all 0.2s;
     position: relative;
+    font-size: 1.6rem;
 }
 
 .btn:hover{
-    transform: translateY(-3px);
+    transform: translateY(-0.3rem);
     /* Sombra bem discreta */
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .btn:active{
-    transform: translateY(-1px);
+    transform: translateY(-0.1rem);
 }
 
-.btn-white{
+.btn--white{
     background: #fff;
     color: #777;
 }
@@ -206,7 +228,7 @@ com que quebrem de linha mesmo estando no mesmo elemento h1 */
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -228,7 +250,7 @@ com que quebrem de linha mesmo estando no mesmo elemento h1 */
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     100% {
@@ -238,7 +260,7 @@ com que quebrem de linha mesmo estando no mesmo elemento h1 */
 }
 
 
-.btn-animated{
+.btn--animated{
     animation: moveInBottom 0.3s ease-in-out 0.75s;
     /* Faz com que o button não receba nenhum estilo no 0% */
     animation-fill-mode: backwards;
