@@ -1,152 +1,5 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-
-/* RESET Para browsers usando universal selctor ou seja é o " * " */
-* ,
-*::after,
-*::before{
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-}
-
-html{
-    
-    /* 
-    Isso aqui vai ajudar na questão de responsividade do website
-    onde posso manipular todas as fontes com apenas uma linha
-    */
-    
-    font-size: 100%;
-    
-}
-
-/* 
-Boa pratica colocar fontes e css universal no body assim
-cada filho receberá esse css 
-
-- Fazer isso pelo body e não peli universal selector
-*/
-
-body {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    /* font-size: 16px; */
-    line-height: 1.7;
-    color: #777;
-    padding: 3rem;
-
-    /* 
-    
-    Quando você define box-sizing: border-box;, a largura e a altura de um elemento incluem o conteúdo, o padding e a borda. Isso facilita a definição de layouts porque as dimensões que você especifica para um elemento são as dimensões finais que ele terá na tela, sem precisar adicionar o padding e a borda separadamente
-    */
-
-    box-sizing: border-box;
-
-}
-
-/* HEADER CSS */
-
-.header {
-    height: 95vh;
-    background-image: linear-gradient(to right,
-            /*Direção do gradiente*/
-            rgba(126, 213, 111, 0.8),
-            rgba(40, 180, 133, 0.8)),
-        url(../img/hero-small.jpg
-);
-    background-size: cover;
-    /* 
-    Esse top ajuda em responsividade se ajustando ao topo
-    podendo ser usado como center, se voltando sempre ao centro
-    */
-    background-position: top;
-    position: relative;
-    /* Corte da imagem na diagonal 
-    
-    clip-path: polygon(x y , x y, x y, x y);
-
-    link para clip path generator
-    https://www.cssportal.com/css-clip-path-generator/
-
-    */
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-}
-
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
-
-.header__logo {
-    height: 3.5rem;
-}
-
-.header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    text-align: center;
-
-    /* 
-        O transform e translate(-50%, -50%) são utilizados para centralizar o elemento.
-        O translate(-50%, -50%) desloca o elemento 50% do seu próprio tamanho para a esquerda e para cima,
-        ajustando sua posição de forma que o ponto central do elemento fique exatamente
-        nas coordenadas definidas por top e left.
-    */
-
-    transform: translate(-50%, -50%);
-}
-
-/* Texto h1 */
-.heading-primary {
-    color: #fff;
-    text-transform: uppercase;
-    /* Ajuda com relação a comportamento com animações */
-    backface-visibility: hidden;
-    margin-bottom: 6rem;
-}
-
-/* colando display block cria-se uma especie de br nos span fazendo
-com que quebrem de linha mesmo estando no mesmo elemento h1 */
-
-.heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-
-    animation-name: moveInLeft;
-    animation-duration: 2s;
-
-    /* 
-    Define a quantidade de vezes seguidas que a animação ocorrera
-    */
-    /* animation-iteration-count: 3; */
-
-    /* Defini o tempo em que a animação será executada ao carregar a pagina
-     */
-    /* animation-delay: 3s; */
-}
-
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 18.8px;
-    
-    animation: moveInRight 2s ease-in-out;
-}
-
+@charset "UTF-8";
 /* Animations Animações */
-
 /* 
     Como usar: Ao chamar o @keyFrames basta passar o nome da animação,
     - Depois basta definir os momentos da animação
@@ -158,110 +11,177 @@ com que quebrem de linha mesmo estando no mesmo elemento h1 */
     animation-name: moveInLeft;
     animation-duration: 3s;
 */
-
 @keyframes moveInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
-
-    80% {
-        transform: translateX(1rem);
-
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 @keyframes moveInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-    }
-
-    80% {
-        transform: translateX(-1rem);
-
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-
-/* Buttton  Animation - Animação do button*/
-
-.btn:link,
-.btn:visited{
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block;
-    border-radius: 10rem;
-    transition: all 0.2s;
-    position: relative;
-    font-size: 1.6rem;
-}
-
-.btn:hover{
-    transform: translateY(-0.3rem);
-    /* Sombra bem discreta */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.btn:active{
-    transform: translateY(-0.1rem);
-}
-
-.btn--white{
-    background: #fff;
-    color: #777;
-}
-
-.btn::after{
-    content:"" ;
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.4s;
-}
-
-.btn-white::after{
-    background-color: #fff;
-}
-
-.btn:hover::after{
-    transform: scaleX(1.4) scaleY(1.6);
+  0% {
     opacity: 0;
-}
-
-
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 @keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
+/* RESET Para browsers usando universal selctor ou seja é o " * " */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
 
+html {
+  /* 
+    Isso aqui vai ajudar na questão de responsividade do website
+    onde posso manipular todas as fontes com apenas uma linha
+    */
+  font-size: 62.5%; }
 
-.btn--animated{
-    animation: moveInBottom 0.3s ease-in-out 0.75s;
-    /* Faz com que o button não receba nenhum estilo no 0% */
-    animation-fill-mode: backwards;
-}
+/* 
+Boa pratica colocar fontes e css universal no body assim
+cada filho receberá esse css 
+
+- Fazer isso pelo body e não peli universal selector
+*/
+body {
+  /* 
+    
+    Quando você define box-sizing: border-box;, a largura e a altura de um elemento incluem o conteúdo, o padding e a borda. Isso facilita a definição de layouts porque as dimensões que você especifica para um elemento são as dimensões finais que ele terá na tela, sem precisar adicionar o padding e a borda separadamente
+    */
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* Ajuda com relação a comportamento com animações */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    /* 
+        Define a quantidade de vezes seguidas que a animação ocorrera
+        */
+    /* animation-iteration-count: 3; */
+    /* Defini o tempo em que a animação será executada ao carregar a pagina
+         */
+    /* animation-delay: 3s; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 18.8px;
+    animation: moveInRight 2s ease-in-out; }
+
+.btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1.6rem; }
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  /* Sombra bem discreta */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+
+.btn:active {
+  transform: translateY(-0.1rem); }
+
+.btn--white {
+  background: #fff;
+  color: #777; }
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s; }
+
+.btn-white::after {
+  background-color: #fff; }
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0; }
+
+.btn--animated {
+  animation: moveInBottom 0.3s ease-in-out 0.75s;
+  /* Faz com que o button não receba nenhum estilo no 0% */
+  animation-fill-mode: backwards; }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
+  background-size: cover;
+  /* 
+    Esse top ajuda em responsividade se ajustando ao topo
+    podendo ser usado como center, se voltando sempre ao centro
+    */
+  background-position: top;
+  position: relative;
+  /* Corte da imagem na diagonal 
+    
+    clip-path: polygon(x y , x y, x y, x y);
+
+    link para clip path generator
+    https://www.cssportal.com/css-clip-path-generator/
+
+    */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    /* 
+            O transform e translate(-50%, -50%) são utilizados para centralizar o elemento.
+            O translate(-50%, -50%) desloca o elemento 50% do seu próprio tamanho para a esquerda e para cima,
+            ajustando sua posição de forma que o ponto central do elemento fique exatamente
+            nas coordenadas definidas por top e left.
+        */
+    transform: translate(-50%, -50%); }

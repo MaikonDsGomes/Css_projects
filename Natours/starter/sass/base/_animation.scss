@@ -1,0 +1,59 @@
+/* Animations Animações */
+
+/* 
+    Como usar: Ao chamar o @keyFrames basta passar o nome da animação,
+    - Depois basta definir os momentos da animação
+    - O opacity serve faz com que no inicio fique invisivel e depois apareça
+    - transform está fazendo o mesmo que quando usamos para centralizar, porem como a animação está da esquerda para direita, posicionamos o elementos um pouco para esquerda
+
+    Como aplicar:
+    Basta colocar o código abaixo, chamando o nome da animação e definindo o tempo 
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+*/
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}

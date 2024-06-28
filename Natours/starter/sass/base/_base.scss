@@ -1,0 +1,39 @@
+// resets 
+
+/* RESET Para browsers usando universal selctor ou seja é o " * " */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+
+    /* 
+    Isso aqui vai ajudar na questão de responsividade do website
+    onde posso manipular todas as fontes com apenas uma linha
+    */
+
+    font-size: 62.5%;
+
+}
+
+/* 
+Boa pratica colocar fontes e css universal no body assim
+cada filho receberá esse css 
+
+- Fazer isso pelo body e não peli universal selector
+*/
+
+body {
+
+    /* 
+    
+    Quando você define box-sizing: border-box;, a largura e a altura de um elemento incluem o conteúdo, o padding e a borda. Isso facilita a definição de layouts porque as dimensões que você especifica para um elemento são as dimensões finais que ele terá na tela, sem precisar adicionar o padding e a borda separadamente
+    */
+
+    box-sizing: border-box;
+
+}
