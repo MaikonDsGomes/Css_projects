@@ -1,6 +1,6 @@
 .row {
     max-width: $grid-width;
-    background-color: #eee;
+ 
     margin: 0 auto;
 
     // Seleciona todos exceto o ultimo filho
@@ -13,7 +13,7 @@
     // Seleciona todos os elementos que tiver tudo o que está nos braktes
     // Portanto, todos os elementos que começam com col- vão recener o código
     [class^="col-"] {
-        background-color: orangered;
+        
         float: left;
 
         &:not(:last-child) {
